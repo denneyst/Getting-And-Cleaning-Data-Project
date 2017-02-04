@@ -46,8 +46,8 @@ CompleteData <- rbind(train, test)
 colnames(CompleteData) <- c("subject", "activity", featuresWanted.names)
 
 # turn activities & subjects into factors
-allData$activity <- factor(CompleteData$activity, levels = activityLabels[,1], labels = activityLabels[,2])
-allData$subject <- as.factor(CompleteData$subject)
+CompleteData$activity <- factor(CompleteData$activity, levels = activityLabels[,1], labels = activityLabels[,2])
+CompleteData$subject <- as.factor(CompleteData$subject)
 
 CompleteData.melted <- melt(CompleteData, id = c("subject", "activity"))
 CompleteData.mean <- dcast(CompleteData.melted, subject + activity ~ variable, mean)
